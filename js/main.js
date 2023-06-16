@@ -3,12 +3,11 @@ const paladiumi = 342.67;
 const cryptonid = 565.23;
 const alamantiumud = 692.12;
 const galliongo = 832.78;
-let monto = 0;
 
 function ingresarOpcion() {
   let opcion = Number(
     prompt(
-      "Bienvenido a Max Power. En que podemos ayudarle? 1. Cargar combustible. | 2. Salir."
+      "Bienvenido a Max Power. En que podemos ayudarle? \n 1. Cargar combustible. \n 2. Salir."
     )
   );
   if (opcion > 2) {
@@ -68,6 +67,20 @@ function calcularMonto(lts, combus) {
   return monto;
 }
 
+function pagoEfectivo() {
+  let efect = confirm(
+    "Desea pagar con efectivo? Seleccione ACEPTAR para pagar con efectivo."
+  );
+  return efect;
+}
+
+function pagoTarjeta() {
+  let tarje = confirm(
+    "Desea pagar con targeta? Si ya selecciono el metodo por efectivo, oprima CANCELAR."
+  );
+  return tarje;
+}
+
 let operacion = ingresarOpcion();
 
 if (!isNaN(operacion)) {
@@ -78,12 +91,8 @@ if (!isNaN(operacion)) {
 
     alert("Su monto total a pagar es de: " + monto);
 
-    let efectivo = confirm(
-      "Desea pagar con efectivo? Seleccione ACEPTAR para pagar con efectivo."
-    );
-    let tarjeta = confirm(
-      "Desea pagar con targeta? Si ya selecciono el metodo por efectivo, oprima CANCELAR."
-    );
+    let efectivo = pagoEfectivo();
+    let tarjeta = pagoTarjeta();
 
     if (efectivo) {
       let saldo = Number(prompt("Ingrese su saldo"));
