@@ -98,8 +98,7 @@ if (!isNaN(operacion)) {
       let saldo = Number(prompt("Ingrese su saldo"));
       if (saldo > monto) {
         alert("Pago realizado con exito!");
-      }
-      if (saldo < monto) {
+      } else if (saldo < monto) {
         alert(
           "Saldo insuficiente! Debera pagar con targeta de credito o debito. El pago se realizara de forma instantanea."
         );
@@ -123,8 +122,7 @@ if (!isNaN(operacion)) {
             if (saldo > monto) {
               alert("Pago realizado con exito!");
               break;
-            }
-            if (saldo < monto) {
+            } else if (saldo < monto) {
               alert(
                 "Saldo insuficiente! Debera pagar con targeta de credito. El pago se realizara de forma instantanea. Gracias por confiar en nosotros!"
               );
