@@ -1,0 +1,51 @@
+body {
+  font-family: "Montserrat", sans-serif;
+  background: linear-gradient(rgb(0, 0, 94), rgb(0, 0, 45));
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  text-align: center;
+  color: aliceblue;
+}
+
+h1 {
+  font-size: 65px;
+}
+
+h2 {
+  font-size: 30px;
+  color: rgb(145, 151, 156);
+}
+
+h3 {
+  font-size: 25px;
+}
+
+li {
+  font-size: 19px;
+  color: rgb(145, 151, 156);
+}
+
+h4 {
+  font-size: 30px;
+}
+
+.combus-precios {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  list-style: none;
+}
+
+.combus {
+  margin-right: 50px;
+}
+
+.precios {
+  margin-left: 50px;
+}
