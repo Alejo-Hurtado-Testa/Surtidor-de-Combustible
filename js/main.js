@@ -20,16 +20,9 @@ function ingresarOpcion() {
 }
 
 function ingresarCombustible() {
-  let combustible = Number(
-    prompt("Con que combustible desea potenciar su vehiculo?:")
-  );
-  if (combustible < 6) {
-    return combustible;
-  } else {
-    alert(
-      "INGRESE UN NUMERO DE COMBUSTIBLE VALIDO. LA OPERACION NO TENDRA EN CUENTA LAS DEMAS SELECCIONES QUE HAGA."
-    );
-  }
+  let combustible = prompt("Con que combustible desea potenciar su vehiculo?:");
+  let combustibleMayus = combustible.toUpperCase();
+  return combustibleMayus;
 }
 
 function ingresarLitros() {
@@ -41,30 +34,6 @@ function ingresarLitros() {
       "INGRESE NUMEROS, NO LETRAS. LA OPERACION NO TENDRA EN CUENTA LAS DEMAS OPCIONES."
     );
   }
-}
-
-function calcularMonto(lts, combus) {
-  let monto = 0;
-  if (combus === 1) {
-    monto = lts * vibraniums;
-  }
-
-  if (combus === 2) {
-    monto = lts * paladiumi;
-  }
-
-  if (combus === 3) {
-    monto = lts * cryptonid;
-  }
-
-  if (combus === 4) {
-    monto = lts * alamantiumud;
-  }
-
-  if (combus === 5) {
-    monto = lts * galliongo;
-  }
-  return monto;
 }
 
 function pagoEfectivo() {
@@ -85,61 +54,77 @@ let operacion = ingresarOpcion();
 
 if (!isNaN(operacion)) {
   if (operacion != 2) {
-    let combustible = ingresarCombustible();
-    let litros = ingresarLitros();
-    let monto = calcularMonto(litros, combustible);
+    let combs = ingresarCombustible();
+    let lits = ingresarLitros();
 
-    alert("Su monto total a pagar es de: " + monto);
+    const surtidoresFiltrados = surtidores.filter((surtidor) => {
+      return (
+        surtidor.combustible.toUpperCase() === combs && lits <= surtidor.litros
+      );
+    });
 
-    let efectivo = pagoEfectivo();
-    let tarjeta = pagoTarjeta();
+    let monto = 0;
 
-    if (efectivo) {
-      let saldo = Number(prompt("Ingrese su saldo"));
-      if (saldo > monto) {
-        alert("Pago realizado con exito!");
-      } else if (saldo < monto) {
-        alert(
-          "Saldo insuficiente! Debera pagar con targeta de credito o debito. El pago se realizara de forma instantanea."
-        );
-        tarjeta = true;
-      }
-    }
+    if (surtidoresFiltrados.length > 0) {
+      const surtidorSeleccionado = surtidoresFiltrados[0];
+      monto = surtidorSeleccionado.cargarCombustible(lits);
+      alert(`SU TOTAL A PAGAR ES DE: ${monto}`);
+      alert(`LITROS RESTANTES DEL SURTIDOR: ${surtidorSeleccionado.litros}`);
 
-    if (tarjeta) {
-      for (i = 0; i < 3; i++) {
-        let contrasenia = Number(
-          prompt("Ingrese su DNI que tenga registrado en las tarjetas:")
-        );
-        if (contrasenia === 12345) {
-          let targetadoc = confirm(
-            "Oprima ACEPTAR para pagar con debito u oprima CANCELAR para pagar con credito"
-          );
-          if (targetadoc) {
-            let saldo = Number(
-              prompt("Ingrese el saldo de la tarjeta de debito")
-            );
-            if (saldo > monto) {
-              alert("Pago realizado con exito!");
-              break;
-            } else if (saldo < monto) {
-              alert(
-                "Saldo insuficiente! Debera pagar con targeta de credito. El pago se realizara de forma instantanea. Gracias por confiar en nosotros!"
-              );
-              targetadoc = false;
-              break;
-            }
-          } else if (!targetadoc) {
-            alert("El pago se realizara de forma instantanea.");
-            alert("Pago realizado con exito. Gracias por confiar en nosotros!");
-            break;
-          }
-        } else {
+      let efectivo = pagoEfectivo();
+      let tarjeta = pagoTarjeta();
+
+      if (efectivo) {
+        let saldo = Number(prompt("Ingrese su saldo"));
+        if (saldo > monto) {
+          alert("Pago realizado con exito!");
+        } else if (saldo < monto) {
           alert(
-            "Contrasenia incorrecta. Le quedan: " + (2 - [i]) + " intentos"
+            "Saldo insuficiente! Debera pagar con targeta de credito o debito. El pago se realizara de forma instantanea."
           );
+          tarjeta = true;
         }
       }
+
+      if (tarjeta) {
+        for (i = 0; i < 3; i++) {
+          let contrasenia = Number(
+            prompt("Ingrese su DNI que tenga registrado en las tarjetas:")
+          );
+          if (contrasenia === 12345) {
+            let targetadoc = confirm(
+              "Oprima ACEPTAR para pagar con debito u oprima CANCELAR para pagar con credito"
+            );
+            if (targetadoc) {
+              let saldo = Number(
+                prompt("Ingrese el saldo de la tarjeta de debito")
+              );
+              if (saldo > monto) {
+                alert("Pago realizado con exito!");
+                break;
+              } else if (saldo < monto) {
+                alert(
+                  "Saldo insuficiente! Debera pagar con targeta de credito. El pago se realizara de forma instantanea. Gracias por confiar en nosotros!"
+                );
+                targetadoc = false;
+                break;
+              }
+            } else if (!targetadoc) {
+              alert("El pago se realizara de forma instantanea.");
+              alert(
+                "Pago realizado con exito. Gracias por confiar en nosotros!"
+              );
+              break;
+            }
+          } else {
+            alert(
+              "Contrasenia incorrecta. Le quedan: " + (2 - [i]) + " intentos"
+            );
+          }
+        }
+      }
+    } else {
+      alert("NO SE ENCONTRO NINGUN SURTIDOR DISPONIBLE");
     }
   } else {
     alert("Buen viaje y esperamos tenerlo por aqui nuevamente!");

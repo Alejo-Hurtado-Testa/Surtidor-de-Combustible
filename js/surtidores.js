@@ -28,27 +28,3 @@ surtidores.push(surtidor2);
 surtidores.push(surtidor3);
 surtidores.push(surtidor4);
 surtidores.push(surtidor5);
-
-console.log(surtidores);
-console.log(surtidor2.nombre);
-console.log(surtidor5.combustible);
-
-let combusselecc = prompt("Que combustible desea");
-let combusseleccMayuscula = combusselecc.toUpperCase();
-let litroselecc = Number(prompt("cuaantos litros deseaa"));
-
-const surtidoresFiltrados = surtidores.filter((surtidor) => {
-  return (
-    surtidor.combustible.toUpperCase() === combusseleccMayuscula &&
-    litroselecc <= surtidor.litros
-  );
-});
-
-if (surtidoresFiltrados.length > 0) {
-  const surtidorSeleccionado = surtidoresFiltrados[0];
-  const total = surtidorSeleccionado.cargarCombustible(litroselecc);
-  alert(`SU TOTAL A PAGAR ES DE: ${total}`);
-  alert(`LITROS RESTANTES DEL SURTIDOR: ${surtidorSeleccionado.litros}`);
-} else {
-  alert("NO SE ENCONTRO NINGUN SURTIDOR DISPONIBLE");
-}
