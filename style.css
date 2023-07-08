@@ -1,6 +1,44 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 body {
   font-family: "Montserrat", sans-serif;
-  background: linear-gradient(rgb(0, 0, 94), rgb(0, 0, 45));
+  background-image: url(img/markus-spiske-o8IfF0RUTTs-unsplash.jpg);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+}
+
+.titulos {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+h1 {
+  color: aliceblue;
+  font-size: 45px;
+  letter-spacing: 2px;
+}
+
+h2 {
+  margin-top: 30px;
+  font-size: 30px;
+  letter-spacing: 2px;
+  color: rgb(20, 20, 20);
+}
+
+.background {
+  background-color: rgb(0, 0, 0);
+}
+
+.separador-img {
+  width: 100%;
 }
 
 .container {
@@ -8,31 +46,19 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 100vh;
   text-align: center;
-  color: aliceblue;
-}
-
-h1 {
-  font-size: 65px;
-}
-
-h2 {
-  font-size: 30px;
-  color: rgb(145, 151, 156);
 }
 
 h3 {
-  font-size: 25px;
+  color: aliceblue;
+  font-size: 55px;
+  margin: 100px 0px;
+  letter-spacing: 2.5px;
 }
 
 li {
-  font-size: 19px;
+  font-size: 1.6rem;
   color: rgb(145, 151, 156);
-}
-
-h4 {
-  font-size: 30px;
 }
 
 .combus-precios {
@@ -40,6 +66,7 @@ h4 {
   justify-content: center;
   align-items: center;
   list-style: none;
+  margin-bottom: 100px;
 }
 
 .combus {
@@ -48,4 +75,32 @@ h4 {
 
 .precios {
   margin-left: 50px;
+}
+
+.btn {
+  margin-bottom: 90px;
+  color: aliceblue;
+  font-size: 25px;
+  background-color: transparent;
+  padding: 20px 55px;
+  border: 1px solid aliceblue;
+  border-radius: 25px;
+  transition: all 0.4s ease;
+}
+
+.btn:hover {
+  cursor: pointer;
+  color: #a68c76;
+  border-color: #a68c76;
+  letter-spacing: 2.5px;
+}
+
+.text {
+  margin: 0 25vw;
+  margin-bottom: 90px;
+}
+
+.text-info {
+  color: aliceblue;
+  font-size: 20px;
 }
