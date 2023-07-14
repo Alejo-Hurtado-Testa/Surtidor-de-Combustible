@@ -59,9 +59,99 @@
           </div>
         </div>
       </div>
+      <div class="carga-combus">
+        <form class="formulario grid-container">
+          <div class="input-line grid-item">
+            <label for="name" class="combus-label"
+              >Nombre del combustible que desea:</label
+            >
+            <input
+              type="text"
+              name="name"
+              id="name"
+              class="combus-input"
+              placeholder="Ej: Vibranium S"
+              required
+            />
+          </div>
+          <div class="input-line grid-item">
+            <label for="litros" class="combus-label"
+              >Cuantos litros deseas cargar:</label
+            >
+            <input
+              type="number"
+              name="litros"
+              id="lts"
+              class="combus-input"
+              placeholder="Ej: 10"
+              required
+            />
+          </div>
+          <div class="btn-calcular">
+            <input type="submit" value="Calcular total" class="btn-calc" />
+          </div>
+        </form>
+        <span class="separador-forms"></span>
+        <div>
+          <h4 class="info-monto">Monto total a pagar:</h4>
+        </div>
+        <form class="formulario grid-container">
+          <fieldset class="input-select grid-item">
+            <label for="pago" class="combus-label"
+              >Que metodo de pago prefiere:</label
+            >
+            <select name="pago" id="metpago" class="combus-input">
+              <option value="efect">Efectivo</option>
+              <option value="debit">Debito</option>
+              <option value="credit">Credito</option>
+            </select>
+          </fieldset>
+          <div class="input-line grid-item">
+            <label for="saldo" class="combus-label"
+              >Ingrese su saldo disponible:</label
+            >
+            <input
+              type="number"
+              name="saldo"
+              id="saldo"
+              class="combus-input"
+              required
+            />
+          </div>
+          <div class="input-line grid-item">
+            <label for="clave" class="combus-label"
+              >Ingrese su clave de acceso a la tarjeta (5 digitos):</label
+            >
+            <input
+              type="number"
+              name="clave"
+              id="clave"
+              class="combus-input"
+              required
+            />
+          </div>
+          <div class="input-line grid-item">
+            <label for="saldev" class="combus-label"
+              >Ingrese su saldo disponible en la tarjeta de debito:</label
+            >
+            <input
+              type="number"
+              name="saldev"
+              id="saldev"
+              class="combus-input"
+              required
+            />
+          </div>
+          <div class="btn-calcular">
+            <input type="submit" value="Finalizar pago" class="btn-calc" />
+          </div>
+        </form>
+      </div>
     </div>
+    <!--
     <script src="js/funciones.js"></script>
     <script src="js/surtidores.js"></script>
     <script src="js/main.js"></script>
+    -->
   </body>
 </html>
