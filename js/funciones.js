@@ -1,45 +1,41 @@
-function ingresarOpcion() {
-  let opcion = Number(
-    prompt(
-      "Bienvenido a Max Power. En que podemos ayudarle? \n 1. Cargar combustible. \n 2. Salir."
-    )
-  );
-  if (opcion > 2) {
-    alert(
-      "OPCION NO VALIDA. LA OPERACION NO TENDRA EN CUENTA LAS DEMAS SELECCIONES QUE HAGA."
-    );
-  } else {
-    return opcion;
-  }
-}
+const namecb = document.getElementById('name');
+const litroscb = document.getElementById('lts');
+const saldo = document.getElementById('saldoefect');
+const clave = document.getElementById('claveinput');
 
 function ingresarCombustible() {
-  let combustible = prompt("Con que combustible desea potenciar su vehiculo?:");
+  let combustible = namecb.value;
   let combustibleMayus = combustible.toUpperCase();
-  return combustibleMayus;
+  return { valido: !!combustibleMayus, valor: combustibleMayus }; // RETORNAMOS UN OBJETO PARA PODER RETORNAR DOS VALORES NECESARIOS
 }
 
 function ingresarLitros() {
-  let litros = Number(prompt("Ingrese los litros que desea cargar:"));
-  if (!isNaN(litros)) {
-    return litros;
-  } else {
-    alert(
-      "INGRESE NUMEROS, NO LETRAS. LA OPERACION NO TENDRA EN CUENTA LAS DEMAS OPCIONES."
-    );
-  }
+  let litros = litroscb.value;
+  return { valido: !!litros, valor: Number(litros) }; // RETORNAMOS UN OBJETO PARA PODER RETORNAR DOS VALORES NECESARIOS
 }
 
 function pagoEfectivo() {
-  let efect = confirm(
-    "Desea pagar con efectivo? Seleccione ACEPTAR para pagar con efectivo."
-  );
-  return efect;
+  let efect = inputEfectivo.value;
+  return efect === 'efectivo';
 }
 
 function pagoTarjeta() {
-  let tarje = confirm(
-    "Desea pagar con targeta? Si ya selecciono el metodo por efectivo, oprima CANCELAR."
-  );
-  return tarje;
+  let tarje = inputTarjeta.value;
+  return tarje === 'tarjeta';
+}
+
+function saldoEfectivo() {
+  let saldoEFT = Number(saldo.value);
+  return saldoEFT;
+}
+
+function claveTarjeta() {
+  let claveTDC = Number(clave.value);
+  return claveTDC;
+}
+
+function total(namesurti, total, litrosrest) {
+  return `<h4 class="info-monto">Usted selecciono el surtidor: ${namesurti}</h4>
+  <h5 class="info-monto">Su total a pagar es de: ${total}</h5>
+  <h6 class="info-monto">Litros restantes en el surtidor: ${litrosrest}</h6>`;
 }
