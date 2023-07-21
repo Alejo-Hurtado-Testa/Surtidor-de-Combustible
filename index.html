@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -11,12 +12,53 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="style.css" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-dark@4/dark.css"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="js/funciones.js" defer></script>
+    <script src="js/sesion.js" defer></script>
+    <!--<script src="js/surtidores.js" defer></script>
+    
+    <script src="js/eventos.js" defer></script>
+    <script src="js/main.js" defer></script>-->
     <title>Max Power EDC</title>
   </head>
   <body>
-    <div class="titulos">
-      <h1>Bienvenido a Max Power! Lo mejor para tu vehiculo.</h1>
-      <h2>Tu vehiculo, te lo agradecera, con potencia y velocidad.</h2>
+    <div class="logg" id="loggform">
+      <h1 class="logg-title">Logeate para comenzar a operar!</h1>
+      <form class="logg-form" id="formlog">
+        <div class="centrado">
+          <input
+            type="text"
+            name="name-logg"
+            id="namelogg"
+            class="logg-nombre"
+            placeholder="Tu nombre."
+            required
+          />
+          <input
+            type="text"
+            name="surname-logg"
+            id="surnamelogg"
+            class="logg-apellido"
+            placeholder="Tu apellido."
+            required
+          />
+        </div>
+        <input type="submit" value="Comenzamos?" class="logg-btn" id="btnlog" />
+      </form>
+    </div>
+    <div class="ocultar" id="ocultar1">
+      <div class="titulos">
+        <h1>
+          Bienvenido <span class="nomusuario" id="nomusuario"></span> a Max
+          Power! Lo mejor para tu vehiculo.
+        </h1>
+        <h2>Tu vehiculo, te lo agradecera, con potencia y velocidad.</h2>
+      </div>
     </div>
     <div class="background">
       <div class="separador">
@@ -26,119 +68,117 @@
           alt="Service"
         />
       </div>
-      <div class="container">
-        <div class="container-combus">
-          <h3>Nuestros precios y combustibles:</h3>
-          <ul>
-            <div class="combus-precios">
-              <div class="combus">
-                <li>1 - Vibranium S</li>
-                <li>2 - Paladium I</li>
-                <li>3 - Crypton ID</li>
-                <li>4 - Alamantium UD</li>
-                <li>5 - Gallion GO</li>
+      <div class="ocultar" id="ocultar2">
+        <div class="container">
+          <div class="container-combus">
+            <h3>Nuestros precios y combustibles:</h3>
+            <ul>
+              <div class="combus-precios">
+                <div class="combus">
+                  <li>1 - Vibranium S</li>
+                  <li>2 - Paladium I</li>
+                  <li>3 - Crypton ID</li>
+                  <li>4 - Alamantium UD</li>
+                  <li>5 - Gallion GO</li>
+                </div>
+                <div class="precios">
+                  <li>$236.43 x LT</li>
+                  <li>$342.67 x LT</li>
+                  <li>$565.23 x LT</li>
+                  <li>$692.12 x LT</li>
+                  <li>$832.78 x LT</li>
+                </div>
               </div>
-              <div class="precios">
-                <li>$236.43 x LT</li>
-                <li>$342.67 x LT</li>
-                <li>$565.23 x LT</li>
-                <li>$692.12 x LT</li>
-                <li>$832.78 x LT</li>
-              </div>
+            </ul>
+            <button id="btn">Llena tu tanque ahora</button>
+            <div class="text">
+              <p class="text-info">
+                Brindamos una alta tecnologia, tanto en nuestro combustible como
+                en nuestro software, por eso te ofrecemos la disponibilidad de
+                elegir cuantos litros queres cargar, abonas ahora y te damos un
+                codigo de seguridad para poder ir a nuestras estaciones, mostrar
+                dicho codigo y cargar tus litros.
+              </p>
             </div>
-          </ul>
-          <button id="btn">Llena tu tanque ahora</button>
-          <div class="text">
-            <p class="text-info">
-              Brindamos una alta tecnologia, tanto en nuestro combustible como
-              en nuestro software, por eso te ofrecemos la disponibilidad de
-              elegir cuantos litros queres cargar, abonas ahora y te damos un
-              codigo de seguridad para poder ir a nuestras estaciones, mostrar
-              dicho codigo y cargar tus litros.
-            </p>
           </div>
         </div>
-      </div>
-      <div class="carga-combus">
-        <div class="formulario grid-container" id="ocultar-form1">
-          <div class="input-line grid-item">
-            <label for="name" class="combus-label"
-              >Nombre del combustible que desea:</label
-            >
-            <input
-              type="text"
-              name="name"
-              id="name"
-              class="combus-input"
-              placeholder="Ej: Vibranium S"
-              required
-            />
-          </div>
-          <div class="input-line grid-item">
-            <label for="litros" class="combus-label"
-              >Cuantos litros deseas cargar:</label
-            >
-            <input
-              type="number"
-              name="litros"
-              id="lts"
-              class="combus-input"
-              placeholder="Ej: 10"
-              required
-            />
-          </div>
-          <div class="btn-calcular">
-            <input type="submit" value="Calcular total" id="btn-calc" />
-          </div>
-        </div>
-        <span class="separador-forms"></span>
-        <div id="ocultar-form2">
-          <div id="texto"></div>
-          <div class="formulario grid-container">
-            <fieldset class="input-select grid-item">
-              <label for="pago" class="combus-label"
-                >Que metodo de pago prefiere:</label
-              >
-              <select name="pago" id="metpago" class="combus-input">
-                <option value="">Seleccione un metodo de pago</option>
-                <option value="efectivo">Efectivo</option>
-                <option value="tarjeta">Tarjeta</option>
-              </select>
-            </fieldset>
-            <div class="input-line grid-item" id="efectivo">
-              <label for="saldo" class="combus-label"
-                >Ingrese su saldo disponible en efectivo:</label
+        <div class="carga-combus">
+          <form class="formulario grid-container" id="ocultar-form1">
+            <div class="input-line grid-item">
+              <label for="name" class="combus-label"
+                >Nombre del combustible que desea:</label
               >
               <input
-                type="number"
-                name="saldo"
-                id="saldoefect"
+                type="text"
+                name="name"
+                id="name"
                 class="combus-input"
+                placeholder="Ej: Vibranium S"
                 required
               />
             </div>
-            <div class="input-line grid-item" id="tarjeta">
-              <label for="clave" class="combus-label"
-                >Ingrese su clave de acceso a la tarjeta (5 digitos):</label
+            <div class="input-line grid-item">
+              <label for="litros" class="combus-label"
+                >Cuantos litros deseas cargar:</label
               >
               <input
                 type="number"
-                name="clave"
-                id="claveinput"
+                name="litros"
+                id="lts"
                 class="combus-input"
+                placeholder="Ej: 10"
                 required
               />
             </div>
-            <div class="btn-finalizar">
-              <input type="submit" value="Finalizar pago" id="btn-fin" />
+            <div class="btn-calcular">
+              <input type="submit" value="Calcular total" id="btn-calc" />
             </div>
+          </form>
+          <span class="separador-forms"></span>
+          <div id="ocultar-form2">
+            <div id="texto"></div>
+            <form class="formulario grid-container">
+              <fieldset class="input-select grid-item">
+                <label for="pago" class="combus-label"
+                  >Que metodo de pago prefiere:</label
+                >
+                <select name="pago" id="metpago" class="combus-input" required>
+                  <option value="">Seleccione un metodo de pago</option>
+                  <option value="efectivo" id="efe">Efectivo</option>
+                  <option value="tarjeta" id="tar">Tarjeta</option>
+                </select>
+              </fieldset>
+              <div class="input-line grid-item" id="efectivo">
+                <label for="saldo" class="combus-label"
+                  >Ingrese su saldo disponible en efectivo:</label
+                >
+                <input
+                  type="number"
+                  name="saldo"
+                  id="saldoefect"
+                  class="combus-input"
+                  required
+                />
+              </div>
+              <div class="input-line grid-item" id="tarjeta">
+                <label for="clave" class="combus-label"
+                  >Ingrese su clave de acceso a la tarjeta (5 digitos):</label
+                >
+                <input
+                  type="number"
+                  name="clave"
+                  id="claveinput"
+                  class="combus-input"
+                  required
+                />
+              </div>
+              <div class="btn-finalizar">
+                <input type="submit" value="Finalizar pago" id="btn-fin" />
+              </div>
+            </form>
           </div>
         </div>
       </div>
     </div>
-    <script src="js/surtidores.js"></script>
-    <script src="js/funciones.js"></script>
-    <script src="js/eventos.js"></script>
-    <script src="js/main.js"></script>
   </body>
 </html>

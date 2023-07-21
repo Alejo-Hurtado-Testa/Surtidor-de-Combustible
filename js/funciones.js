@@ -14,16 +14,6 @@ function ingresarLitros() {
   return { valido: !!litros, valor: Number(litros) }; // RETORNAMOS UN OBJETO PARA PODER RETORNAR DOS VALORES NECESARIOS
 }
 
-function pagoEfectivo() {
-  let efect = inputEfectivo.value;
-  return efect === 'efectivo';
-}
-
-function pagoTarjeta() {
-  let tarje = inputTarjeta.value;
-  return tarje === 'tarjeta';
-}
-
 function saldoEfectivo() {
   let saldoEFT = Number(saldo.value);
   return saldoEFT;
@@ -38,4 +28,8 @@ function total(namesurti, total, litrosrest) {
   return `<h4 class="info-monto">Usted selecciono el surtidor: ${namesurti}</h4>
   <h5 class="info-monto">Su total a pagar es de: ${total}</h5>
   <h6 class="info-monto">Litros restantes en el surtidor: ${litrosrest}</h6>`;
+}
+
+function quitarEnvioForm(event) {
+  event.preventDefault();
 }

@@ -1,4 +1,4 @@
-const activar = document.getElementById('btn-calc');
+let monto = 0;
 
 function esperarClick() {
   let combs = ingresarCombustible();
@@ -12,49 +12,23 @@ function esperarClick() {
       );
     });
 
-    let monto = 0;
-
     if (surtidoresFiltrados.length > 0) {
       const surtidorSeleccionado = surtidoresFiltrados[0];
-      monto = surtidorSeleccionado.cargarCombustible(lits.valor);
+      monto += surtidorSeleccionado.cargarCombustible(lits.valor);
       texto.innerHTML += total(
         surtidorSeleccionado.nombre,
         monto,
         surtidorSeleccionado.litros
       );
-
-      let efectivo = pagoEfectivo();
-      let tarjeta = pagoTarjeta();
-
-      if (efectivo) {
-        console.log('entro a efectivo');
-        let saldo = saldoEfectivo();
-        if (saldo > monto) {
-          alert('Pago realizado con exito!');
-        } else if (saldo < monto) {
-          alert(
-            'Saldo insuficiente! Debera pagar con targeta de credito o debito. El pago se realizara de forma instantanea.'
-          );
-        }
-      } else {
-        alert('no entro en efectivo');
-      }
-
-      if (tarjeta) {
-        let contrasenia = claveTarjeta();
-        if (contrasenia === 12345) {
-          alert('Pago realizado con exito!');
-          alert('Gracias por confiar en nosotros!');
-        }
-      }
     } else {
-      alert('NO SE ENCONTRO NINGUN SURTIDOR DISPONIBLE');
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'No se encontro ningun surtidor disponible! Vuelve a intentarlo mas tarde.',
+        background: 'Dark',
+      });
     }
-  } else {
-    alert('Buen viaje y esperamos tenerlo por aqui nuevamente!');
   }
 }
 
-activar.addEventListener('click', () => {
-  esperarClick();
-});
+btnCalcular.addEventListener('click', esperarClick);

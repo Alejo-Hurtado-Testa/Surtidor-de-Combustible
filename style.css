@@ -12,12 +12,78 @@ body {
   background-size: cover;
 }
 
+.logg {
+  height: 100vh;
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.logg-title {
+  margin-bottom: 100px;
+  text-align: center;
+  letter-spacing: 3px;
+}
+
+.logg-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.centrado {
+  display: inline-block;
+  margin-bottom: 50px;
+}
+
+.logg-nombre,
+.logg-apellido {
+  background-color: transparent;
+  color: aliceblue;
+  border: 1.8px solid aliceblue;
+  border-radius: 10px;
+  font-size: 18px;
+  padding: 15px 5px;
+  width: 500px;
+  letter-spacing: 2px;
+}
+
+.logg-btn {
+  cursor: pointer;
+  display: block;
+  font-size: 20px;
+  color: aliceblue;
+  background-color: #7e6a58;
+  padding: 20px 60px;
+  border: none;
+  border: 2px solid #7e6a58;
+  border-radius: 50px;
+  letter-spacing: 2px;
+  transition: all 0.3s;
+}
+
+.logg-btn:hover {
+  background-color: transparent;
+  letter-spacing: 4px;
+}
+
+.ocultar {
+  display: none;
+}
+
 .titulos {
   height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+
+.nomusuario {
+  color: rgb(20, 20, 20);
+  text-transform: capitalize;
 }
 
 h1 {
@@ -96,14 +162,14 @@ li {
 }
 
 .text {
-  margin: 0 25vw;
+  margin: 0 25vh;
   margin-bottom: 90px;
 }
 
 .text-info {
-  color: aliceblue;
   font-size: 20px;
   letter-spacing: 1.5px;
+  color: aliceblue;
 }
 
 .carga-combus {

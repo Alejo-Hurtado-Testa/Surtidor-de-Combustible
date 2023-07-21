@@ -6,6 +6,10 @@ const metodoPago = document.getElementById('metpago');
 const inputEfectivo = document.getElementById('efectivo');
 const inputTarjeta = document.getElementById('tarjeta');
 const btnFin = document.getElementById('btn-fin');
+const requerEfect = document.getElementById('saldoefect');
+const requerTarje = document.getElementById('claveinput');
+
+fomulario1.addEventListener('submit', quitarEnvioForm);
 
 btnLlenar.addEventListener('click', () => {
   fomulario1.style.display = 'grid';
@@ -16,9 +20,6 @@ btnCalcular.addEventListener('click', () => {
   let litrosTrue = ingresarLitros();
   if (combusTrue.valido && litrosTrue.valido && litrosTrue.valor <= 1000) {
     formulario2.style.display = 'grid';
-    /* texto.innerHTML += Total(); */
-  } else {
-    alert('LLENE LOS CAMPOS CORRESPONDIENTES');
   }
 });
 
@@ -27,8 +28,10 @@ metodoPago.addEventListener('change', () => {
   if (metodoPagoSelec === 'efectivo') {
     inputEfectivo.style.display = '';
     inputTarjeta.style.display = 'none';
+    requerTarje.removeAttribute('required');
   } else if (metodoPagoSelec === 'tarjeta') {
     inputEfectivo.style.display = 'none';
+    requerEfect.removeAttribute('required');
     inputTarjeta.style.display = '';
   } else {
     inputEfectivo.style.display = 'none';
@@ -37,12 +40,37 @@ metodoPago.addEventListener('change', () => {
 });
 
 btnFin.addEventListener('click', () => {
+  quitarEnvioForm(event);
   const metodoPagoSelec = metodoPago.value;
-  if (metodoPagoSelec === 'efectivo' && saldoEfectivo() >= 1000) {
-    alert('PAGO REALIZADO CON EXITO');
+  if (metodoPagoSelec === 'efectivo' && saldoEfectivo() >= monto) {
+    monto = 0;
+    Swal.fire({
+      icon: 'success',
+      title: 'Realizado!',
+      text: 'Pago realizado con exito!',
+      footer: `<h5 class="info-monto">Su total a pagar es de: ${monto}</h5>`,
+    }).then((result) => {
+      if (result.isConfirmed) {
+        window.location.reload();
+      }
+    });
   } else if (metodoPagoSelec === 'tarjeta' && claveTarjeta() === 12345) {
-    alert('PAGO REALIZADO Y ACREDITADO EN SU TARJETA CON EXTIO');
+    monto = 0;
+    Swal.fire({
+      icon: 'success',
+      title: 'Realizado!',
+      text: 'Pago realizado y acreditado en su tarjeta con exito!',
+      footer: `<h5 class="info-monto">Su total a pagar es de: ${monto}</h5>`,
+    }).then((result) => {
+      if (result.isConfirmed) {
+        window.location.reload();
+      }
+    });
   } else {
-    alert('ERROR! NO SE HA PODIDO COMPLETAR EL PAGO');
+    Swal.fire({
+      icon: 'error',
+      title: 'Oops...',
+      text: 'El pago no pudo completarse!',
+    });
   }
 });
