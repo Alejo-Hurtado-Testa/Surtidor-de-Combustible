@@ -1,19 +1,28 @@
-let monto = 0;
+import { crearSurtidores } from './surtidores.js';
 
-function esperarClick() {
+const btnCalcular = document.getElementById('btn-calc');
+export let monto = 0;
+
+async function esperarClick() {
   let combs = ingresarCombustible();
   let lits = ingresarLitros();
 
   if (combs.valido && lits.valido) {
-    const surtidoresFiltrados = surtidores.filter((surtidor) => {
-      return (
-        surtidor.combustible.toUpperCase() === combs.valor &&
-        lits.valor <= surtidor.litros
-      );
-    });
+    async function filtrarSurtidores() {
+      const surtidores = await crearSurtidores();
+      const surtidoresFiltrados = surtidores.filter((surtidor) => {
+        return (
+          surtidor.combustible.toUpperCase() === combs.valor &&
+          lits.valor <= surtidor.litros
+        );
+      });
+      return surtidoresFiltrados;
+    }
 
-    if (surtidoresFiltrados.length > 0) {
-      const surtidorSeleccionado = surtidoresFiltrados[0];
+    const filtrados = await filtrarSurtidores();
+
+    if (filtrados.length > 0) {
+      const surtidorSeleccionado = filtrados[0];
       monto += surtidorSeleccionado.cargarCombustible(lits.valor);
       texto.innerHTML += total(
         surtidorSeleccionado.nombre,

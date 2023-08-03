@@ -1,3 +1,5 @@
+import { monto } from './main.js';
+
 const btnLlenar = document.getElementById('btn');
 const fomulario1 = document.getElementById('ocultar-form1');
 const btnCalcular = document.getElementById('btn-calc');
@@ -43,24 +45,22 @@ btnFin.addEventListener('click', () => {
   quitarEnvioForm(event);
   const metodoPagoSelec = metodoPago.value;
   if (metodoPagoSelec === 'efectivo' && saldoEfectivo() >= monto) {
-    monto = 0;
     Swal.fire({
       icon: 'success',
       title: 'Realizado!',
       text: 'Pago realizado con exito!',
-      footer: `<h5 class="info-monto">Su total a pagar es de: ${monto}</h5>`,
+      footer: `<h5 class="info-monto">Su total a pagar es de: 0</h5>`,
     }).then((result) => {
       if (result.isConfirmed) {
         window.location.reload();
       }
     });
   } else if (metodoPagoSelec === 'tarjeta' && claveTarjeta() === 12345) {
-    monto = 0;
     Swal.fire({
       icon: 'success',
       title: 'Realizado!',
       text: 'Pago realizado y acreditado en su tarjeta con exito!',
-      footer: `<h5 class="info-monto">Su total a pagar es de: ${monto}</h5>`,
+      footer: `<h5 class="info-monto">Su total a pagar es de: 0</h5>`,
     }).then((result) => {
       if (result.isConfirmed) {
         window.location.reload();

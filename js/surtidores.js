@@ -11,20 +11,39 @@ class Surtidor {
       this.litros -= lts;
       return this.precio * lts;
     } else {
-      alert("EL SURTIDOR NO CUENTA CON LA CANTIDAD DE LITROS SOLICITADOS.");
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'El surtidor no cuenta con la cantidad de litros solicitados.',
+        background: 'Dark',
+      });
     }
   }
 }
 
-const surtidor1 = new Surtidor("Surtidor V", "Vibranium S", 236.43, 1000);
-const surtidor2 = new Surtidor("Surtidor P", "Paladium I", 342.67, 1000);
-const surtidor3 = new Surtidor("Surtidor C", "Crypton ID", 565.23, 1000);
-const surtidor4 = new Surtidor("Surtidor A", "Alamantium UD", 692.12, 1000);
-const surtidor5 = new Surtidor("Surtidor G", "Gallion GO", 832.78, 1000);
+async function pedirSurtidores() {
+  try {
+    const resp = await fetch('http://127.0.0.1:5500/js/servicio.json');
+    const data = await resp.json();
+    return data;
+  } catch (error) {
+    Swal.fire({
+      icon: 'error',
+      title: 'Oops...',
+      text: `No se ha podido acceder a la informacion de los surtidores: ${error}`,
+      background: 'Dark',
+    });
+    return [];
+  }
+}
 
-let surtidores = [];
-surtidores.push(surtidor1);
-surtidores.push(surtidor2);
-surtidores.push(surtidor3);
-surtidores.push(surtidor4);
-surtidores.push(surtidor5);
+export async function crearSurtidores() {
+  const datos = await pedirSurtidores();
+  let surtidores = [];
+  datos.forEach((element) => {
+    const { nombre, combustible, precio, litros } = element;
+    const surtidor = new Surtidor(nombre, combustible, precio, litros);
+    surtidores.push(surtidor);
+  });
+  return surtidores;
+}

@@ -1,0 +1,32 @@
+[
+  {
+    "nombre": "Surtidor V",
+    "combustible": "Vibranium S",
+    "precio": 236.43,
+    "litros": 1000
+  },
+  {
+    "nombre": "Surtidor P",
+    "combustible": "Paladium I",
+    "precio": 342.67,
+    "litros": 1000
+  },
+  {
+    "nombre": "Surtidor C",
+    "combustible": "Crypton ID",
+    "precio": 565.23,
+    "litros": 1000
+  },
+  {
+    "nombre": "Surtidor A",
+    "combustible": "Alamantium UD",
+    "precio": 692.12,
+    "litros": 1000
+  },
+  {
+    "nombre": "Surtidor G",
+    "combustible": "Gallion GO",
+    "precio": 832.78,
+    "litros": 1000
+  }
+]
