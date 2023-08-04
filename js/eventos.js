@@ -1,7 +1,7 @@
 import { monto } from './main.js';
 
 const btnLlenar = document.getElementById('btn');
-const fomulario1 = document.getElementById('ocultar-form1');
+const fomulario1 = document.querySelector('.ocultar-form1');
 const btnCalcular = document.getElementById('btn-calc');
 const formulario2 = document.getElementById('ocultar-form2');
 const metodoPago = document.getElementById('metpago');
@@ -14,7 +14,7 @@ const requerTarje = document.getElementById('claveinput');
 fomulario1.addEventListener('submit', quitarEnvioForm);
 
 btnLlenar.addEventListener('click', () => {
-  fomulario1.style.display = 'grid';
+  fomulario1.classList.remove('ocultar-form1');
 });
 
 btnCalcular.addEventListener('click', () => {

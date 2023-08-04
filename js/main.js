@@ -26,7 +26,7 @@ async function esperarClick() {
       monto += surtidorSeleccionado.cargarCombustible(lits.valor);
       texto.innerHTML += total(
         surtidorSeleccionado.nombre,
-        monto,
+        monto.toFixed(2),
         surtidorSeleccionado.litros
       );
     } else {
